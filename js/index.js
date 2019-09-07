@@ -18,23 +18,28 @@ function numPressed(event) {
 
 opers.forEach ( buttonOper => buttonOper.addEventListener('click', operPressed));
 
-function operPressed(event) {
-    const oper = event.target.innerText;
+function operPressed(ev) {
+    const oper = ev.target.innerText;
     display.value += oper;
+    for(let i = 0; i < opers.length; i++){
+     if(display.value.includes(opers[i].innerText)) {
+         display.value += ev.target.innerText;
+     }
+    }
 }
 
 equal.addEventListener('click', () => display.value = eval(display.value) );
-back.addEventListener('click', backs());
 
- function backs(){
-    let exp = document.form.textview.value
-    document.form.textview.value = exp.substring(0,exp.length-1)
-}
-// clear.addEventListener('click', () => clear.form.value );
+clear.addEventListener('click', () => display.value = '' );
 
 
 
+// back.addEventListener('click', backs());
 
+//  function backs(){
+//     let exp = document.form.textview.value
+//     document.form.textview.value = exp.substring(0,exp.length-1)
+// }
 
 
 
