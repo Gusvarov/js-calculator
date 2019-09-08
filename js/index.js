@@ -16,14 +16,22 @@ function numPressed(event) {
 }
 
 
+// one-time event
+// onetime(document.getElementById("myelement"), "click", handler);
+
+// handler function
+// function handler(e) {
+// 	alert("You'll only see this once!");
+// }
+
 opers.forEach ( buttonOper => buttonOper.addEventListener('click', operPressed));
 
-function operPressed(ev) {
-    const oper = ev.target.innerText;
+function operPressed(event) {
+    const oper = event.target.innerText;
     display.value += oper;
     for(let i = 0; i < opers.length; i++){
-     if(display.value.includes(opers[i].innerText)) {
-         display.value += ev.target.innerText;
+     if (display.value.includes(opers[i].innerText)) {
+         display.value += event.target.innerText;
      }
     }
 }
@@ -34,12 +42,16 @@ clear.addEventListener('click', () => display.value = '' );
 
 
 
-// back.addEventListener('click', backs());
+back.addEventListener('click', backSpace());
 
-//  function backs(){
-//     let exp = document.form.textview.value
-//     document.form.textview.value = exp.substring(0,exp.length-1)
-// }
+ function backSpace(){
+    let exp = display.value;
+//    display.value = exp.substring(0,exp.length-1)
+    if ( exp.length > 0 ) {
+        exp = exp.substring(0, exp.length - 1);
+        display.value = exp;
+    }
+}
 
 
 
