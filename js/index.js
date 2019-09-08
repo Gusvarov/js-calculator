@@ -16,7 +16,7 @@ opers.forEach ( buttonOper => buttonOper.addEventListener('click', operPressed))
 function operPressed(event) {
     let oper = event.target.innerText;
     display.value += oper;
-    for (let i = 0; i === opers.length; i++){
+    for (let i = 0; i < opers.length - 1; i++){
         if (!display.value.includes(opers[i].innerText)) {
             display.value += event.target.innerText;
         }
