@@ -18,7 +18,4 @@ function dividend(firstNumber, secondNumber) {
       throw new Error(firstNumber + " / " + secondNumber);
       }
   return result.innerText;
-  if ( result.innerText === Infinity ) {
-      alert('Error');
-  }
 }

@@ -14,17 +14,20 @@ function numPressed(event) {
 opers.forEach ( buttonOper => buttonOper.addEventListener('click', operPressed));
 
 function operPressed(event) {
-    let oper = event.target.innerText;
-    display.value += oper;
-    for (let i = 0; i < opers.length; i++){
-        if (display.value.includes(opers[i].innerText)) {
-            display.value += event.target.innerText;
+    const oper = event.target.innerText;
+        if (!display.value.includes('-') && !display.value.includes('+') && !display.value.includes('/') && !display.value.includes('*')) {
+            display.value += oper;
         }
     }
-}
 
+equal.addEventListener('click', notAZero);
 
-equal.addEventListener('click', () => display.value = eval(display.value) );
+function notAZero() {
+     const notZero = eval(display.value);
+      if(!(notZero === Number.POSITIVE_INFINITY)){
+         display.value = notZero;
+      }
+ }
 
 clear.addEventListener('click', () => display.value = '' );
 
