@@ -15,7 +15,7 @@ opers.forEach ( buttonOper => buttonOper.addEventListener('click', operPressed))
 
 function operPressed(event) {
     const oper = event.target.innerText;
-        if (!display.value.includes('-') && !display.value.includes('+') && !display.value.includes('/') && !display.value.includes('*')) {
+        if (!display.value.includes('+') && !display.value.includes('-') && !display.value.includes('*') && !display.value.includes('/')) {
             display.value += oper;
         }
     }
