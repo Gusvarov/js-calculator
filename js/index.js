@@ -10,22 +10,33 @@ function numPressed(event) {
     const num = event.target.innerText;
     display.value += num;
 }
-
-opers.forEach ( buttonOper => buttonOper.addEventListener('click', operPressed));
-
-function operPressed(event) {
-    const oper = event.target.innerText;
-        if (!display.value.includes('+') && !display.value.includes('-') && !display.value.includes('*') && !display.value.includes('/')) {
-            display.value += oper;
-        }
+opers.forEach(buttonOper => buttonOper.addEventListener('click', operPressed));
+function operPressed(ev) {
+    const oper = ev.target.innerText;
+    if (!display.value.includes('-')
+        && !display.value.includes('+')
+        && !display.value.includes('/')
+        && !display.value.includes('*')) {
+        display.value += oper;
+    } else if (display.value.charAt(display.value.length - 1) === '-'
+               || display.value.charAt(display.value.length - 1) === '+'
+               || display.value.charAt(display.value.length - 1) === '*'
+               || display.value.charAt(display.value.length - 1) === '/') {
+        let text = display.value.split('');
+        text.pop();
+        text.push(oper);
+        display.value = text.join('');
     }
+}
 
 equal.addEventListener('click', notAZero);
 
 function notAZero() {
      const notZero = eval(display.value);
-      if(!(notZero === Number.POSITIVE_INFINITY)){
+      if(!(notZero === Number.POSITIVE_INFINITY) && !(text === Number.NEGATIVE_INFINITY)){
          display.value = notZero;
+      } else {
+          display.value = 'Error';
       }
  }
 
